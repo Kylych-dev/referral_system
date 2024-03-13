@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    "apps.accounts",
+    "apps.profiles",
+
+    "corsheaders",
+    "rest_framework",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -81,6 +88,9 @@ DATABASES = {
 }
 
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -116,6 +126,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
